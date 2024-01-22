@@ -1,12 +1,12 @@
 pipeline {
     agent any
     stages{
-     stage('init'){
+     stage('initialize'){
         steps {
             sh 'terraform init'
         }
      }
-     stage('format'){
+     stage('format the code'){
         steps{
             sh 'terraform fmt'
         }
@@ -21,9 +21,9 @@ pipeline {
             sh 'terraform plan'
         }
      }
-     stage('destroy'){
+     stage('apply'){
         stage{
-            sh 'terraform destroy --auto-approve'
+            sh 'terraform apply --auto-approve'
         }
      }
     }
